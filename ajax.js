@@ -7,6 +7,7 @@ $(function() {
             type:'GET',
             data : formData,
             success: function(res) {
+                // alert(res);
                 jQuery('#ajaxform')[0].reset();
                 res = JSON.parse(res);
                 var services = '';

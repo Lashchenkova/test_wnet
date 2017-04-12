@@ -11,5 +11,6 @@ if (!empty($_GET['check'])) {
     }
 }
 
-include_once('DbWrapper.php');
-DbWrapper::getInstance()->get_data($id_contract, $status);
+include_once('Database.php');
+$a = new Customer($id_contract, $status);
+$a->get_data();
