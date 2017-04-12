@@ -3,29 +3,28 @@ $(function() {
         var formData = $('#ajaxform').serialize();
 
         $.ajax({
-            url:'index.php',
+            url:'main.php',
             type:'GET',
             data : formData,
             success: function(res) {
-                // alert(res);
                 jQuery('#ajaxform')[0].reset();
                 res = JSON.parse(res);
+
                 var services = '';
                 var result = $('.results');
 
-                if(!res.length){
+                if (!res.length) {
                     result.html('нет такого клиента');
                     return;
                 }
-
                 for (var i = 1; i <= res.length - 1; i++) {
                     services += res[i].title_service + ": " + res[i].status + "<br>";
                 }
-                if(!services){
+                if (!services) {
                     services = "сервисов нет";
                 }
 
-               result.load('view.html', function() {
+               result.load( 'view/view.html', function() {
                     $('td:contains("[name_customer]")').text(res[0].name_customer);
                     $('td:contains("[ company]")').text(res[0].company);
                     $('td:contains("[ number]")').text(res[0].number);
